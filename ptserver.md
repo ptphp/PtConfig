@@ -120,9 +120,15 @@
     make clean
     make
     make install
-    cp php.ini-production /opt/ptserver/etc/php-5.5.13/php.ini
-    cp /opt/ptserver/php/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/etc/php-5.5.13/php-fpm.conf
+    cp php.ini-production /opt/ptserver/php-5.5.13/etc/php.ini
+    cp /opt/ptserver/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/php-5.5.13/php-fpm.conf
+    
+    ln -s /opt/ptserver/php-5.5.13/bin/php /usr/local/bin/php
+    
+    
     vim /etc/init.d/php5-fpm
+    
+    
     sudo chmod +x /etc/init.d/php5-fpm
     sudo update-rc.d php5-fpm defaults
     
@@ -140,25 +146,29 @@
     #重启php-fpm
     kill -USR2 `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
     /opt/ptserver/php/php-5.5.13/bin/pecl install ZendOpache-beta
-    echo 'zend_extension_ts ="opcache.so"' > /opt/ptserver/etc/php-5.5.13/conf/opcache.ini
-    ln -s /opt/ptserver/php/php-5.5.13/bin/php /usr/local/bin/php
-    wget https://github.com/krakjoe/pthreads/archive/master.zip -O pthreads.zip
-    unzip pthreads.zip
-    cd pthreads-master
-    /opt/ptserver/php/php-5.5.13/bin/phpize
-    ./configure --with-php-config=/opt/ptserver/php/php-5.5.13/bin/php-config
-    make
-    make install
-    echo 'extension = "pthreads.so"' > /opt/ptserver/etc/php-5.5.13/conf/pthreads.ini
+    
+    
+    
+    /opt/ptserver/php-5.5.13/bin/pecl install pthreads
+    echo 'extension = "pthreads.so"' > /opt/ptserver/php-5.5.13/etc/conf/pthreads.ini
     php --ini
-    /opt/ptserver/php/php-5.5.13/bin/pecl install redis
-    echo 'extension = "redis.so"' > /opt/ptserver/etc/php-5.5.13/conf/redis.ini
-    /opt/ptserver/php/php-5.5.13/bin/pecl install memcache
-    echo 'extension = "memcache.so"' > /opt/ptserver/etc/php-5.5.13/conf/memcache.ini
-    /opt/ptserver/php/php-5.5.13/bin/pecl install mongo
-    echo 'extension = "mongo.so"' > /opt/ptserver/etc/php-5.5.13/conf/mongo.ini
-    /opt/ptserver/php/php-5.5.13/bin/pecl install riak
-    echo 'extension = "riak.so"' > /opt/ptserver/etc/php-5.5.13/conf/riak.ini
+    
+    /opt/ptserver/php-5.5.13/bin/pecl install redis
+    echo 'extension = "redis.so"' > /opt/ptserver/php-5.5.13/etc/conf/redis.ini
+    
+    /opt/ptserver/php-5.5.13/bin/pecl install memcache
+    echo 'extension = "memcache.so"' > /opt/ptserver/php-5.5.13/etc/conf/memcache.ini
+    
+    /opt/ptserver/php-5.5.13/bin/pecl install mongo
+    echo 'extension = "mongo.so"' > /opt/ptserver/php-5.5.13/etc/conf/mongo.ini
+    
+    /opt/ptserver/php-5.5.13/bin/pecl install riak
+    echo 'extension = "riak.so"' > /opt/ptserver/php-5.5.13/etc/conf/riak.ini
+    
+    
+    echo 'zend_extension_ts =opcache.so' > /opt/ptserver/php-5.5.13/etc/conf/opcache.ini
+    
+    php -S 0.0.0.0:80 -t /opt/ptserver/webroot
 
 #redis-server
 
