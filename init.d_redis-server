@@ -19,7 +19,7 @@ NAME=redis-server
 DESC=redis-server
 
 RUNDIR=/var/run/redis
-PIDFILE=$RUNDIR/redis-server.pid
+PIDFILE=$RUNDIR/redis.pid
 
 test -x $DAEMON || exit 0
 
