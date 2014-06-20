@@ -264,7 +264,9 @@ nutcracker.yml
         server_failure_limit: 1
         servers:
             - 127.0.0.1:6379:1
-            
+
+启动：
+
     sbin/nutcracker -t conf/nutcracker.yml
     sbin/nutcracker -d -c conf/nutcracker.yml -p run/redisproxy.pid -o run/redisproxy.log
 
