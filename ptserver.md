@@ -189,6 +189,7 @@
 
     mkdir -p /var/log/redis/
     mkdir -p /var/lib/redis
+    mkdir -p /var/run/redis
     mkdir -p /opt/soft/
     mkdir -p /opt/ptserver/redis-2.8.11/bin
     cd /opt/soft/
