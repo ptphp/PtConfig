@@ -54,10 +54,16 @@
 
     make
     make install
-    cd /etc/init.d/
-    sudo chmod +x ./nginx
+
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_nginx -O /etc/init.d/nginx
+    
+    sudo chmod +x /etc/init.d/nginx
     sudo update-rc.d nginx defaults
+    
     update-rc.d -f nginx remove
+    
+#mongodb
+    
     mkdir -p /opt/ptserver/mongodb-2.6.2/
     wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.2.tgz
     tar zxvf mongodb-linux-x86_64-2.6.2.tgz
