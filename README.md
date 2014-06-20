@@ -79,6 +79,11 @@
     cd mongodb-linux-x86_64-2.6.2
     cp -R -n mongodb-linux-x86_64-2.6.2/ /opt/ptserver/mongodb-2.6.2/
     mkdir -p /var/mongo/data
+    
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_mongod -O /etc/init.d/mongod 
+    chmod +x /etc/init.d/mongod    
+    update-rc.d mongod defaults
+    
     /opt/ptserver/mongodb-2.6.2/bin/mongod --dbpath /var/mongo/data
 
 #php
