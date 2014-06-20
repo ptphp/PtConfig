@@ -19,6 +19,10 @@
     sudo apt-get install -y vim
     update-alternatives --config editor
     
+#查看系统允许的最大连接数
+
+    ulimit -a | grep open
+
 #建立目录
 
     mkdir -p /opt/ptserver/apache2.4/
