@@ -121,34 +121,39 @@
     make
     make install
     cp php.ini-production /opt/ptserver/php-5.5.13/etc/php.ini
-    cp /opt/ptserver/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/php-5.5.13/php-fpm.conf
-    
+    cp /opt/ptserver/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/php-5.5.13/etc/php-fpm.conf
     ln -s /opt/ptserver/php-5.5.13/bin/php /usr/local/bin/php
     
+    cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+    chmod +x /etc/init.d/php-fpm
+    update-rc.d php-fpm defaults
     
-    vim /etc/init.d/php5-fpm
-    
-    
-    sudo chmod +x /etc/init.d/php5-fpm
-    sudo update-rc.d php5-fpm defaults
+    groupadd nobody
     
 测试
 
-    /opt/ptserver/php/php-5.5.13/sbin/php-fpm -t
-    /opt/ptserver/php/php-5.5.13/sbin/php-fpm -c /opt/ptserver/etc/php-5.5.13/php.ini -y /opt/ptserver/etc/php-5.5.13/php-fpm.conf -t
-    groupadd nobody
-    #启动php-fpm
-    /opt/ptserver/php/php-5.5.13/sbin/php-fpm
-    /opt/ptserver/php/php-5.5.13/sbin/php-fpm -c /opt/ptserver/etc/php-5.5.13/php.ini -y /opt/ptserver/etc/php-5.5.13/php-fpm.conf
-     ps -aux | grep php
-    #关闭php-fpm
-    kill -INT `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
-    #重启php-fpm
-    kill -USR2 `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
+    /opt/ptserver/php-5.5.13/sbin/php-fpm -t
+    /opt/ptserver/php-5.5.13/sbin/php-fpm -c /opt/ptserver/php-5.5.13/etc/php.ini -y /opt/ptserver/php-5.5.13/etc/php-fpm.conf -t
+    
+    
+启动php-fpm
+
+    /opt/ptserver/php-5.5.13/sbin/php-fpm
+    /opt/ptserver/php-5.5.13/sbin/php-fpm -c /opt/ptserver/php-5.5.13/etc/php.ini -y /opt/ptserver/php-5.5.13/etc/php-fpm.conf
+    ps -aux | grep php
+    
+关闭php-fpm
+
+    kill -INT `cat /opt/ptserver/php-5.5.13/var/run/php-fpm.pid`
+
+重启php-fpm
+
+    kill -USR2 `cat /opt/ptserver/php-5.5.13/var/run/php-fpm.pid`
     /opt/ptserver/php/php-5.5.13/bin/pecl install ZendOpache-beta
     
     
-    
+安装扩展
+
     /opt/ptserver/php-5.5.13/bin/pecl install pthreads
     echo 'extension = "pthreads.so"' > /opt/ptserver/php-5.5.13/etc/conf/pthreads.ini
     php --ini
