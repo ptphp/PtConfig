@@ -22,7 +22,8 @@
 #查看系统允许的最大连接数
 
     ulimit -a | grep open
-
+    ulimit -n 65535
+    
 #建立目录
 
     mkdir -p /opt/ptserver/apache2.4/
