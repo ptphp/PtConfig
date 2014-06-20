@@ -21,10 +21,8 @@
     
 #建立目录
 
-    mkdir -p /opt/ptserver/src/
-    mkdir -p /opt/ptserver/php/php-5.5.13
     mkdir -p /opt/ptserver/apache2.4/
-    mkdir -p /opt/ptserver/etc/php-5.5.13/conf
+    mkdir -p /opt/ptserver/php-5.5.13/etc/conf
     mkdir -p /opt/ptserver/webroot/
 
 
@@ -69,14 +67,14 @@
     /opt/ptserver/mongodb-2.6.2/bin/mongod --dbpath /var/mongo/data
 
 #php
-
+    
     cd /opt/soft
-    wget http://cn2.php.net/get/php-5.5.13.tar.gz/from/this/mirror -O php-5.5.13.tar.gz
+    wget http://mirrors.sohu.com/php/php-5.5.13.tar.gz -O php-5.5.13.tar.gz
     tar xzvf php-5.5.13.tar.gz
     cd php-5.5.13
-    ./configure --prefix=/opt/ptserver/php/php-5.5.13 \
-       --with-config-file-path=/opt/ptserver/etc/php-5.5.13 \
-       --with-config-file-scan-dir=/opt/ptserver/etc/php-5.5.13/conf \
+    ./configure --prefix=/opt/ptserver/php-5.5.13 \
+       --with-config-file-path=/opt/ptserver/php-5.5.13/etc/ \
+       --with-config-file-scan-dir=/opt/ptserver/php-5.5.13/etc/conf \
        --with-iconv-dir \
        --with-gettext \
        --enable-calendar \
@@ -118,6 +116,7 @@
        --enable-sysvmsg \
        --enable-embed \
        --enable-maintainer-zts
+       
     make clean
     make
     make install
