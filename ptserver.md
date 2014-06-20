@@ -18,176 +18,184 @@
     sudo apt-get install -y git
     sudo apt-get install -y vim
     update-alternatives --config editor
+    
+#建立目录
+
     mkdir -p /opt/ptserver/src/
     mkdir -p /opt/ptserver/php/php-5.5.13
-    mkdir -p /opt/ptserver/php/php-5.3.28
     mkdir -p /opt/ptserver/apache2.4/
     mkdir -p /opt/ptserver/etc/php-5.5.13/conf
-    mkdir -p /opt/ptserver/etc/php-5.3.28/conf
     mkdir -p /opt/ptserver/webroot/
 
 
 #nginx
 
-sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
-wget http://nginx.org/download/nginx-1.6.0.tar.gz
-tar xzvf nginx-1.6.0.tar.gz
-cd nginx-1.6.0
-./configure --prefix=/opt/ptserver/nginx-1.6.0 --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_gzip_static_module
-  nginx path prefix: "/opt/ptserver/nginx-1.6.0"
-  nginx binary file: "/opt/ptserver/nginx-1.6.0/sbin/nginx"
-  nginx configuration prefix: "/opt/ptserver/nginx-1.6.0/conf"
-  nginx configuration file: "/opt/ptserver/nginx-1.6.0/conf/nginx.conf"
-  nginx pid file: "/opt/ptserver/nginx-1.6.0/logs/nginx.pid"
-  nginx error log file: "/opt/ptserver/nginx-1.6.0/logs/error.log"
-  nginx http access log file: "/opt/ptserver/nginx-1.6.0/logs/access.log"
-  nginx http client request body temporary files: "client_body_temp"
-  nginx http proxy temporary files: "proxy_temp"
-  nginx http fastcgi temporary files: "fastcgi_temp"
-  nginx http uwsgi temporary files: "uwsgi_temp"
-  nginx http scgi temporary files: "scgi_temp"
+    sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
+    wget http://nginx.org/download/nginx-1.6.0.tar.gz
+    tar xzvf nginx-1.6.0.tar.gz
+    cd nginx-1.6.0
+    ./configure --prefix=/opt/ptserver/nginx-1.6.0 --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_gzip_static_module
+    
+输出：
+
+    nginx path prefix: "/opt/ptserver/nginx-1.6.0"
+    nginx binary file: "/opt/ptserver/nginx-1.6.0/sbin/nginx"
+    nginx configuration prefix: "/opt/ptserver/nginx-1.6.0/conf"
+    nginx configuration file: "/opt/ptserver/nginx-1.6.0/conf/nginx.conf"
+    nginx pid file: "/opt/ptserver/nginx-1.6.0/logs/nginx.pid"
+    nginx error log file: "/opt/ptserver/nginx-1.6.0/logs/error.log"
+    nginx http access log file: "/opt/ptserver/nginx-1.6.0/logs/access.log"
+    nginx http client request body temporary files: "client_body_temp"
+    nginx http proxy temporary files: "proxy_temp"
+    nginx http fastcgi temporary files: "fastcgi_temp"
+    nginx http uwsgi temporary files: "uwsgi_temp"
+    nginx http scgi temporary files: "scgi_temp"
  
-make
-make install
-cd /etc/init.d/
-sudo chmod +x ./nginx
-sudo update-rc.d nginx defaults
-update-rc.d -f nginx remove
-mkdir -p /opt/ptserver/mongodb-2.6.2/
-wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.2.tgz
-tar zxvf mongodb-linux-x86_64-2.6.2.tgz
-cd mongodb-linux-x86_64-2.6.2
-cp -R -n mongodb-linux-x86_64-2.6.2/ /opt/ptserver/mongodb-2.6.2/
-mkdir -p /var/mongo/data
-/opt/ptserver/mongodb-2.6.2/bin/mongod --dbpath /var/mongo/data
+ 
+编译
+
+    make
+    make install
+    cd /etc/init.d/
+    sudo chmod +x ./nginx
+    sudo update-rc.d nginx defaults
+    update-rc.d -f nginx remove
+    mkdir -p /opt/ptserver/mongodb-2.6.2/
+    wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.2.tgz
+    tar zxvf mongodb-linux-x86_64-2.6.2.tgz
+    cd mongodb-linux-x86_64-2.6.2
+    cp -R -n mongodb-linux-x86_64-2.6.2/ /opt/ptserver/mongodb-2.6.2/
+    mkdir -p /var/mongo/data
+    /opt/ptserver/mongodb-2.6.2/bin/mongod --dbpath /var/mongo/data
 
 #php
-cd /opt/soft
-wget http://cn2.php.net/get/php-5.5.13.tar.gz/from/this/mirror -O php-5.5.13.tar.gz
-tar xzvf php-5.5.13.tar.gz
-cd php-5.5.13
-./configure --prefix=/opt/ptserver/php/php-5.5.13 \
-   --with-config-file-path=/opt/ptserver/etc/php-5.5.13 \
-   --with-config-file-scan-dir=/opt/ptserver/etc/php-5.5.13/conf \
-   --with-iconv-dir \
-   --with-gettext \
-   --enable-calendar \
-   --enable-exif \
-   --enable-wddx \
-   --with-pear \
-   --with-xsl \
-   --with-zlib \
-   --enable-xml \
-   --disable-rpath \
-   --enable-bcmath \
-   --enable-shmop \
-   --enable-sysvsem \
-   --enable-inline-optimization \
-   --with-curl \
-   --enable-mbregex \
-   --enable-fpm \
-   --enable-mbstring \
-   --with-gd \
-   --with-jpeg-dir \
-   --with-png-dir \
-   --with-xpm-dir \
-   --with-t1lib \
-   --with-mcrypt \
-   --with-mysql=mysqlnd \
-   --with-mysqli=mysqlnd \
-   --enable-pdo \
-   --with-pdo-mysql=mysqlnd \
-   --with-freetype-dir \
-   --enable-gd-native-ttf \
-   --with-openssl \
-   --with-mhash \
-   --enable-pcntl \
-   --enable-sockets \
-   --with-xmlrpc \
-   --enable-zip \
-   --enable-soap \
-   --enable-opcache \
-   --enable-sysvmsg \
-   --enable-embed \
-   --enable-maintainer-zts
-make clean
-make
-make install
-cp php.ini-production /opt/ptserver/etc/php-5.5.13/php.ini
-cp /opt/ptserver/php/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/etc/php-5.5.13/php-fpm.conf
-vim /etc/init.d/php5-fpm
-sudo chmod +x /etc/init.d/php5-fpm
-sudo update-rc.d php5-fpm defaults
-#测试
-/opt/ptserver/php/php-5.5.13/sbin/php-fpm -t
-/opt/ptserver/php/php-5.5.13/sbin/php-fpm -c /opt/ptserver/etc/php-5.5.13/php.ini -y /opt/ptserver/etc/php-5.5.13/php-fpm.conf -t
-groupadd nobody
-#启动php-fpm
-/opt/ptserver/php/php-5.5.13/sbin/php-fpm
-/opt/ptserver/php/php-5.5.13/sbin/php-fpm -c /opt/ptserver/etc/php-5.5.13/php.ini -y /opt/ptserver/etc/php-5.5.13/php-fpm.conf
- ps -aux | grep php
-#关闭php-fpm
-kill -INT `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
-#重启php-fpm
-kill -USR2 `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
-/opt/ptserver/php/php-5.5.13/bin/pecl install ZendOpache-beta
-echo 'zend_extension_ts ="opcache.so"' > /opt/ptserver/etc/php-5.5.13/conf/opcache.ini
-ln -s /opt/ptserver/php/php-5.5.13/bin/php /usr/local/bin/php
-wget https://github.com/krakjoe/pthreads/archive/master.zip -O pthreads.zip
-unzip pthreads.zip
-cd pthreads-master
-/opt/ptserver/php/php-5.5.13/bin/phpize
-./configure --with-php-config=/opt/ptserver/php/php-5.5.13/bin/php-config
-make
-make install
-echo 'extension = "pthreads.so"' > /opt/ptserver/etc/php-5.5.13/conf/pthreads.ini
-php --ini
-/opt/ptserver/php/php-5.5.13/bin/pecl install redis
-echo 'extension = "redis.so"' > /opt/ptserver/etc/php-5.5.13/conf/redis.ini
-/opt/ptserver/php/php-5.5.13/bin/pecl install memcache
-echo 'extension = "memcache.so"' > /opt/ptserver/etc/php-5.5.13/conf/memcache.ini
-/opt/ptserver/php/php-5.5.13/bin/pecl install mongo
-echo 'extension = "mongo.so"' > /opt/ptserver/etc/php-5.5.13/conf/mongo.ini
-/opt/ptserver/php/php-5.5.13/bin/pecl install riak
-echo 'extension = "riak.so"' > /opt/ptserver/etc/php-5.5.13/conf/riak.ini
+
+    cd /opt/soft
+    wget http://cn2.php.net/get/php-5.5.13.tar.gz/from/this/mirror -O php-5.5.13.tar.gz
+    tar xzvf php-5.5.13.tar.gz
+    cd php-5.5.13
+    ./configure --prefix=/opt/ptserver/php/php-5.5.13 \
+       --with-config-file-path=/opt/ptserver/etc/php-5.5.13 \
+       --with-config-file-scan-dir=/opt/ptserver/etc/php-5.5.13/conf \
+       --with-iconv-dir \
+       --with-gettext \
+       --enable-calendar \
+       --enable-exif \
+       --enable-wddx \
+       --with-pear \
+       --with-xsl \
+       --with-zlib \
+       --enable-xml \
+       --disable-rpath \
+       --enable-bcmath \
+       --enable-shmop \
+       --enable-sysvsem \
+       --enable-inline-optimization \
+       --with-curl \
+       --enable-mbregex \
+       --enable-fpm \
+       --enable-mbstring \
+       --with-gd \
+       --with-jpeg-dir \
+       --with-png-dir \
+       --with-xpm-dir \
+       --with-t1lib \
+       --with-mcrypt \
+       --with-mysql=mysqlnd \
+       --with-mysqli=mysqlnd \
+       --enable-pdo \
+       --with-pdo-mysql=mysqlnd \
+       --with-freetype-dir \
+       --enable-gd-native-ttf \
+       --with-openssl \
+       --with-mhash \
+       --enable-pcntl \
+       --enable-sockets \
+       --with-xmlrpc \
+       --enable-zip \
+       --enable-soap \
+       --enable-opcache \
+       --enable-sysvmsg \
+       --enable-embed \
+       --enable-maintainer-zts
+    make clean
+    make
+    make install
+    cp php.ini-production /opt/ptserver/etc/php-5.5.13/php.ini
+    cp /opt/ptserver/php/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/etc/php-5.5.13/php-fpm.conf
+    vim /etc/init.d/php5-fpm
+    sudo chmod +x /etc/init.d/php5-fpm
+    sudo update-rc.d php5-fpm defaults
+    
+测试
+
+    /opt/ptserver/php/php-5.5.13/sbin/php-fpm -t
+    /opt/ptserver/php/php-5.5.13/sbin/php-fpm -c /opt/ptserver/etc/php-5.5.13/php.ini -y /opt/ptserver/etc/php-5.5.13/php-fpm.conf -t
+    groupadd nobody
+    #启动php-fpm
+    /opt/ptserver/php/php-5.5.13/sbin/php-fpm
+    /opt/ptserver/php/php-5.5.13/sbin/php-fpm -c /opt/ptserver/etc/php-5.5.13/php.ini -y /opt/ptserver/etc/php-5.5.13/php-fpm.conf
+     ps -aux | grep php
+    #关闭php-fpm
+    kill -INT `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
+    #重启php-fpm
+    kill -USR2 `cat /opt/ptserver/php/php-5.5.13/var/run/php-fpm.pid`
+    /opt/ptserver/php/php-5.5.13/bin/pecl install ZendOpache-beta
+    echo 'zend_extension_ts ="opcache.so"' > /opt/ptserver/etc/php-5.5.13/conf/opcache.ini
+    ln -s /opt/ptserver/php/php-5.5.13/bin/php /usr/local/bin/php
+    wget https://github.com/krakjoe/pthreads/archive/master.zip -O pthreads.zip
+    unzip pthreads.zip
+    cd pthreads-master
+    /opt/ptserver/php/php-5.5.13/bin/phpize
+    ./configure --with-php-config=/opt/ptserver/php/php-5.5.13/bin/php-config
+    make
+    make install
+    echo 'extension = "pthreads.so"' > /opt/ptserver/etc/php-5.5.13/conf/pthreads.ini
+    php --ini
+    /opt/ptserver/php/php-5.5.13/bin/pecl install redis
+    echo 'extension = "redis.so"' > /opt/ptserver/etc/php-5.5.13/conf/redis.ini
+    /opt/ptserver/php/php-5.5.13/bin/pecl install memcache
+    echo 'extension = "memcache.so"' > /opt/ptserver/etc/php-5.5.13/conf/memcache.ini
+    /opt/ptserver/php/php-5.5.13/bin/pecl install mongo
+    echo 'extension = "mongo.so"' > /opt/ptserver/etc/php-5.5.13/conf/mongo.ini
+    /opt/ptserver/php/php-5.5.13/bin/pecl install riak
+    echo 'extension = "riak.so"' > /opt/ptserver/etc/php-5.5.13/conf/riak.ini
 
 #redis-server
-mkdir -p /var/log/redis/
-mkdir -p /var/lib/redis
-mkdir -p /opt/soft/
-mkdir -p /opt/ptserver/redis-2.8.11/bin
-cd /opt/soft/
-wget http://download.redis.io/releases/redis-2.8.11.tar.gz
-tar xzf redis-2.8.11.tar.gz
-cd redis-2.8.11
-make
-make test
-cp redis.conf /opt/ptserver/redis-2.8.11/
-cp src/redis-server /opt/ptserver/redis-2.8.11/bin
-cp src/redis-cli /opt/ptserver/redis-2.8.11/bin
-cp src/redis-benchmark /opt/ptserver/redis-2.8.11/bin
 
-ln -s /opt/ptserver/redis-2.8.11/bin/redis-server /usr/local/bin/redis-server
-ln -s /opt/ptserver/redis-2.8.11/bin/redis-cli /usr/local/bin/redis-cli
-
-echo 'vm.overcommit_memory = 1' > /etc/sysctl.conf
-sysctl vm.overcommit_memory=1
-
-redis-server /opt/ptserver/redis-2.8.11/redis.conf
-
-redis-server /opt/ptserver/redis-2.8.11/6380.conf
-
-
-redis-cli shutdown
+    mkdir -p /var/log/redis/
+    mkdir -p /var/lib/redis
+    mkdir -p /opt/soft/
+    mkdir -p /opt/ptserver/redis-2.8.11/bin
+    cd /opt/soft/
+    wget http://download.redis.io/releases/redis-2.8.11.tar.gz
+    tar xzf redis-2.8.11.tar.gz
+    cd redis-2.8.11
+    make
+    make test
+    cp redis.conf /opt/ptserver/redis-2.8.11/
+    cp src/redis-server /opt/ptserver/redis-2.8.11/bin
+    cp src/redis-cli /opt/ptserver/redis-2.8.11/bin
+    cp src/redis-benchmark /opt/ptserver/redis-2.8.11/bin
+    
+    ln -s /opt/ptserver/redis-2.8.11/bin/redis-server /usr/local/bin/redis-server
+    ln -s /opt/ptserver/redis-2.8.11/bin/redis-cli /usr/local/bin/redis-cli
+    
+    echo 'vm.overcommit_memory = 1' > /etc/sysctl.conf
+    sysctl vm.overcommit_memory=1
+    
+    redis-server /opt/ptserver/redis-2.8.11/redis.conf
+    
+    redis-server /opt/ptserver/redis-2.8.11/6380.conf
+    
+    
+    redis-cli shutdown
 
 #twemproxy
 
 
 1 . 后端一台 Redis 挂掉后，Twemproxy 能够自动摘除。恢复后，Twemproxy 能够自动识别、恢复并重新加入到 Redis 组中重新使用
 2.Redis 挂掉后，后端数据是否丢失依据 Redis 本身的策略配置，与 Twemproxy 基本无关。
-3
-
-
 
 
 无论是 Memcached 还是当前的 Redis，其本身都不具备分布式集群特性，当我们有大量 Redis 或 Memcached 的时候，通常只能通过客户端的一些数据分配算法（比如一致性哈希），来实现集群存储的特性
