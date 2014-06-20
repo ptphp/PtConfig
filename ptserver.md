@@ -208,7 +208,6 @@
     
     redis-server /opt/ptserver/redis-2.8.11/6380.conf
     
-    
     redis-cli shutdown
 
 #twemproxy
