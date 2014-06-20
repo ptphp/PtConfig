@@ -1,1 +1,39 @@
-init.d_mongod
+#!/bin/sh
+ 
+### BEGIN INIT INFO
+# Provides:     mongod
+# Required-Start:
+# Required-Stop:
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description: mongod
+# Description: mongo db server
+### END INIT INFO
+ 
+. /lib/lsb/init-functions
+ 
+PROGRAM=/opt/ptserver/mongodb-2.6.2/bin/mongod
+MONGOPID=`ps -ef | grep 'mongod' | grep -v grep | awk '{print $2}'`
+ 
+test -x $PROGRAM || exit 0
+ 
+case "$1" in
+  start)
+     ulimit -n 65535
+     echo "Starting MongoDB server" 
+     $PROGRAM --fork --quiet -journal -maxConns=2400 -rest --dbpath /var/mongo/data
+     ;;
+  stop)
+     echo "Stopping MongoDB server" 
+     if [ ! -z "$MONGOPID" ]; then 
+        kill -15 $MONGOPID
+     fi
+     ;;
+  status)
+     ;;
+  *)
+     echo "Usage: /etc/init.d/mongod {start|stop|status}" 
+     exit 1
+esac
+ 
+exit 0
