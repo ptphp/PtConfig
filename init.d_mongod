@@ -21,7 +21,7 @@ case "$1" in
   start)
      ulimit -n 65535
      echo "Starting MongoDB server" 
-     $PROGRAM --fork --quiet -journal -maxConns=2400 -rest --dbpath /var/mongo/data
+     $PROGRAM --fork --quiet -journal -maxConns=2400  --logpath /var/mongo/data/journal/mongdb.log --dbpath /var/mongo/data
      ;;
   stop)
      echo "Stopping MongoDB server" 
