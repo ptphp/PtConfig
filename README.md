@@ -146,7 +146,9 @@
     make
     make install
     cp php.ini-production /opt/ptserver/php-5.5.13/etc/php.ini
-    cp /opt/ptserver/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/php-5.5.13/etc/php-fpm.conf
+    
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_php-fpm.conf -O /opt/ptserver/php-5.5.13/etc/php-fpm.conf
+    
     ln -s /opt/ptserver/php-5.5.13/bin/php /usr/local/bin/php
     
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_php5-fpm -O /etc/init.d/php-fpm
