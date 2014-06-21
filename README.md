@@ -69,11 +69,8 @@
     mv /opt/ptserver/nginx-1.6.0/conf/nginx.conf /opt/ptserver/nginx-1.6.0/conf/nginx.conf_bak
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_nginx.conf -O /opt/ptserver/nginx-1.6.0/conf/nginx.conf
     mkdir -p /opt/ptserver/etc/nginx/vhosts
-    
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_nginx_vhosts.conf -O   /opt/ptserver/etc/nginx/vhosts/default.conf
-    
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_nginx -O /etc/init.d/nginx
-    
     sudo chmod +x /etc/init.d/nginx
     sudo update-rc.d nginx defaults
     
@@ -152,7 +149,7 @@
     cp /opt/ptserver/php-5.5.13/etc/php-fpm.conf.default /opt/ptserver/php-5.5.13/etc/php-fpm.conf
     ln -s /opt/ptserver/php-5.5.13/bin/php /usr/local/bin/php
     
-    cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_php5-fpm -O /etc/init.d/php-fpm
     chmod +x /etc/init.d/php-fpm
     update-rc.d php-fpm defaults
     
