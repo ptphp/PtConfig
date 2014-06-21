@@ -37,6 +37,8 @@
     wget http://nginx.org/download/nginx-1.6.0.tar.gz
     tar xzvf nginx-1.6.0.tar.gz
     cd nginx-1.6.0
+    mkdir -p /var/log/nginx
+    
     ./configure --prefix=/opt/ptserver/nginx-1.6.0 \
         --with-http_ssl_module \
         --with-http_stub_status_module \
