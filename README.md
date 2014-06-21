@@ -1,22 +1,9 @@
 
     apt-get update
-    apt-get install -y gcc make
-    sudo apt-get install -y unzip
-    sudo apt-get install -y autoconf
-    sudo apt-get install -y libxml2-dev
-    sudo apt-get install -y bzip2
-    sudo apt-get install -y libcurl3-openssl-dev
-    sudo apt-get install -y libcurl4-gnutls-dev
-    sudo apt-get install -y libjpeg-dev
-    sudo apt-get install -y libpng-dev
-    sudo apt-get install -y libxpm-dev
-    sudo apt-get install -y libfreetype6-dev
-    sudo apt-get install -y libt1-dev
-    sudo apt-get install -y libmcrypt-dev
-    sudo apt-get install -y libmysql++-dev
-    sudo apt-get install -y libxslt1-dev
-    sudo apt-get install -y git
-    sudo apt-get install -y vim
+    apt-get install -y gcc make unzip autoconf libxml2-dev bzip2 libcurl3-openssl-dev libcurl4-gnutls-dev libjpeg-dev
+    apt-get install -y libpng-dev libxpm-dev libfreetype6-dev libt1-dev libmcrypt-dev libmysql++-dev libxslt1-dev
+    apt-get install -y git vim
+    apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
     update-alternatives --config editor
     
 #查看系统允许的最大连接数
@@ -26,14 +13,12 @@
     
 #建立目录
 
-    mkdir -p /opt/ptserver/apache2.4/
     mkdir -p /opt/ptserver/php-5.5.13/etc/conf
     mkdir -p /opt/ptserver/webroot/
 
 
 #nginx
 
-    sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
     wget http://nginx.org/download/nginx-1.6.0.tar.gz
     tar xzvf nginx-1.6.0.tar.gz
     cd nginx-1.6.0
