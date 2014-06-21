@@ -51,6 +51,8 @@
     make
     make install
     
+    mkdir -p /var/log/nginx/
+
     mv /opt/ptserver/nginx-1.6.0/conf/nginx.conf /opt/ptserver/nginx-1.6.0/conf/nginx.conf_bak
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_nginx.conf -O /opt/ptserver/nginx-1.6.0/conf/nginx.conf
     mkdir -p /opt/ptserver/etc/nginx/vhosts
