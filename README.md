@@ -34,16 +34,22 @@
     update-rc.d php-fpm defaults
     service php-fpm start
     
-    mkdir -p /var/log/redis/
+    useradd redis
+    groupadd redis
+    
+    mkdir -p /var/log/redis
     mkdir -p /var/lib/redis
     mkdir -p /var/run/redis
+    
+    chown redis:redis /var/lib/redis 
+    chown redis:redis /var/log/redis
+    
     
     ln -s /opt/ptserver/redis-2.8.11/bin/redis-server /usr/local/bin/redis-server
     ln -s /opt/ptserver/redis-2.8.11/bin/redis-cli /usr/local/bin/redis-cli
     
     
-    useradd redis
-    groupadd redis
+    
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_redis-server -O /etc/init.d/redis-server
     
     chmod +x /etc/init.d/redis-server
