@@ -33,6 +33,26 @@
     chmod +x /etc/init.d/php-fpm
     update-rc.d php-fpm defaults
     service php-fpm start
+    
+    mkdir -p /var/log/redis/
+    mkdir -p /var/lib/redis
+    mkdir -p /var/run/redis
+    
+    ln -s /opt/ptserver/redis-2.8.11/bin/redis-server /usr/local/bin/redis-server
+    ln -s /opt/ptserver/redis-2.8.11/bin/redis-cli /usr/local/bin/redis-cli
+    
+    
+    useradd redis
+    groupadd redis
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_redis-server -O /etc/init.d/redis-server
+    
+    chmod +x /etc/init.d/redis-server
+    sudo update-rc.d redis-server defaults
+    
+    echo 'vm.overcommit_memory = 1' > /etc/sysctl.conf
+    sysctl vm.overcommit_memory=1
+    
+    service redis-server start
 
 
 ---------------------------------------------------------------
