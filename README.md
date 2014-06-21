@@ -16,6 +16,26 @@
     mkdir -p /opt/ptserver/php-5.5.13/etc/conf
     mkdir -p /opt/ptserver/webroot/
 
+#安装
+
+    mkdir /opt
+    
+    mkdir -p /var/log/nginx
+    
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_nginx -O /etc/init.d/nginx
+    chmod +x /etc/init.d/nginx
+    update-rc.d nginx defaults
+    service nginx start
+    
+    ln -s /opt/ptserver/php-5.5.13/bin/php /usr/local/bin/php
+    groupadd nobody
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_php5-fpm -O /etc/init.d/php-fpm
+    chmod +x /etc/init.d/php-fpm
+    update-rc.d php-fpm defaults
+    service php-fpm start
+
+
+---------------------------------------------------------------
 
 #nginx
 
@@ -133,11 +153,9 @@
     make
     make install
     cp php.ini-production /opt/ptserver/php-5.5.13/etc/php.ini
-    
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_php-fpm.conf -O /opt/ptserver/php-5.5.13/etc/php-fpm.conf
     
     ln -s /opt/ptserver/php-5.5.13/bin/php /usr/local/bin/php
-    
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_php5-fpm -O /etc/init.d/php-fpm
     chmod +x /etc/init.d/php-fpm
     update-rc.d php-fpm defaults
