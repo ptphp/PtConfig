@@ -63,6 +63,18 @@
 
 ---------------------------------------------------------------
 
+
+#keepalived
+    
+    cd /opt/soft
+    wget http://www.keepalived.org/software/keepalived-1.2.13.tar.gz
+    tar zxvf keepalived-1.2.13.tar.gz
+    cd keepalived-1.2.13
+    ./configure --prefix=/opt/ptserver/keepalived
+    make && make install
+    
+    
+
 #nginx
 
     wget http://nginx.org/download/nginx-1.6.0.tar.gz
