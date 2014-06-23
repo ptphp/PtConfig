@@ -247,7 +247,7 @@
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_redis.conf -O /opt/ptserver/redis-2.8.11/redis.conf
     
     
-    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_sentinel.conf -O /opt/ptserver/redis-2.8.11/sentinel.conf
+    
     
     cp src/redis-server /opt/ptserver/redis-2.8.11/bin
     cp src/redis-sentinel /opt/ptserver/redis-2.8.11/bin
@@ -283,6 +283,14 @@
     redis-server /opt/ptserver/redis-2.8.11/6380.conf
     
     redis-cli shutdown
+
+#redis-sentinel
+
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_sentinel.conf -O /opt/ptserver/redis-2.8.11/sentinel.conf
+    nohup redis-sentinel /opt/ptserver/redis-2.8.11/sentinel.conf --sentinel > /tmp/sentinel.log &
+    tail -f /tmp/sentinel.log
+    redis-cli -p 26379 info Sentinel
+    redis-cli -p 6379 info Replication
 
 #twemproxy
 
