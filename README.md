@@ -245,6 +245,10 @@
     make
     make test
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_redis.conf -O /opt/ptserver/redis-2.8.11/redis.conf
+    
+    
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_sentinel.conf -O /opt/ptserver/redis-2.8.11/sentinel.conf
+    
     cp src/redis-server /opt/ptserver/redis-2.8.11/bin
     cp src/redis-sentinel /opt/ptserver/redis-2.8.11/bin
     cp src/redis-cli /opt/ptserver/redis-2.8.11/bin
