@@ -53,7 +53,7 @@
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_redis-server -O /etc/init.d/redis-server
     
     chmod +x /etc/init.d/redis-server
-    sudo update-rc.d redis-server defaults
+    update-rc.d redis-server defaults
     
     echo 'vm.overcommit_memory = 1' > /etc/sysctl.conf
     sysctl vm.overcommit_memory=1
@@ -104,8 +104,8 @@
     mkdir -p /opt/ptserver/etc/nginx/vhosts
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_nginx_vhosts.conf -O   /opt/ptserver/etc/nginx/vhosts/default.conf
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_nginx -O /etc/init.d/nginx
-    sudo chmod +x /etc/init.d/nginx
-    sudo update-rc.d nginx defaults
+    chmod +x /etc/init.d/nginx
+    update-rc.d nginx defaults
     
     update-rc.d -f nginx remove
     
@@ -235,9 +235,7 @@
 
 #redis-server
 
-    mkdir -p /var/log/redis/
-    mkdir -p /var/lib/redis
-    mkdir -p /var/run/redis
+    
     mkdir -p /opt/soft/
     mkdir -p /opt/ptserver/redis-2.8.11/bin
     cd /opt/soft/
@@ -258,10 +256,18 @@
     useradd redis
     groupadd redis
     
+    mkdir -p /var/log/redis/
+    mkdir -p /var/lib/redis
+    mkdir -p /var/run/redis
+    
+    chown -R redis:redis /var/log/redis/
+    chown -R redis:redis /var/lib/redis/
+    chown -R redis:redis /var/run/redis/
+    
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_redis-server -O /etc/init.d/redis-server
     
     chmod +x /etc/init.d/redis-server
-    sudo update-rc.d redis-server defaults
+    update-rc.d redis-server defaults
     
     echo 'vm.overcommit_memory = 1' > /etc/sysctl.conf
     sysctl vm.overcommit_memory=1
