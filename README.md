@@ -72,8 +72,10 @@
     cd keepalived-1.2.13
     ./configure --prefix=/opt/ptserver/keepalived
     make && make install
+    cp /opt/ptserver/keepalived/etc/rc.d/init.d/keepalived /etc/init.d/keepalived
+    ln -s /opt/ptserver/keepalived/sbin/keepalived /usr/local/bin/keepalived
     
-    
+    update-rc.d keepalived defaults
 
 #nginx
 
