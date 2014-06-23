@@ -260,9 +260,11 @@
     make test
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/config_redis.conf -O /opt/ptserver/redis-2.8.11/redis.conf
     cp src/redis-server /opt/ptserver/redis-2.8.11/bin
+    cp src/redis-sentinel /opt/ptserver/redis-2.8.11/bin
     cp src/redis-cli /opt/ptserver/redis-2.8.11/bin
     cp src/redis-benchmark /opt/ptserver/redis-2.8.11/bin
     
+    ln -s /opt/ptserver/redis-2.8.11/bin/redis-sentinel /usr/local/bin/redis-sentinel
     ln -s /opt/ptserver/redis-2.8.11/bin/redis-server /usr/local/bin/redis-server
     ln -s /opt/ptserver/redis-2.8.11/bin/redis-cli /usr/local/bin/redis-cli
     
