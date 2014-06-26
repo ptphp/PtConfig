@@ -1,3 +1,8 @@
+#环境
+    
+    ubuntu 12.04
+    
+#
 
     apt-get update
     apt-get install -y gcc make unzip autoconf libxml2-dev bzip2 libcurl3-openssl-dev libcurl4-gnutls-dev libjpeg-dev
@@ -110,12 +115,12 @@
     update-rc.d -f nginx remove
     
 #mongodb
-    
+    cd /opt/soft
     mkdir -p /opt/ptserver/mongodb-2.6.2/
     wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.2.tgz
     tar zxvf mongodb-linux-x86_64-2.6.2.tgz
     cd mongodb-linux-x86_64-2.6.2
-    cp -R -n mongodb-linux-x86_64-2.6.2/ /opt/ptserver/mongodb-2.6.2/
+    cp -R -n bin/ /opt/ptserver/mongodb-2.6.2/
     mkdir -p /var/mongo/data
     
     wget https://raw.githubusercontent.com/ptphp/PtConfig/master/init.d_mongod -O /etc/init.d/mongod 
@@ -123,6 +128,8 @@
     update-rc.d mongod defaults
     
     /opt/ptserver/mongodb-2.6.2/bin/mongod --dbpath /var/mongo/data
+    
+    nohup /opt/ptserver/mongodb-2.6.2/bin/mongod --dbpath /var/mongo/data > /tmp/mongo.log &
 
 #php
     
