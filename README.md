@@ -358,5 +358,16 @@ nutcracker用法与命令选项
     -m, –mbuf-size=N          : 设置mbuf块大小，以bytes单位 (default: 16384 bytes)
 
 
+#安装 pt-service
+    
+    mv /etc/init.d/pt-service /etc/init.d/pt-service.bak
+    wget https://github.com/ptphp/PtConfig/edit/master/init.d_pt-service -O /etc/init.d/pt-service
+    chmod +x /etc/init.d/pt-service
+    
+    #开机启动
+    update-rc.d pt-service defaults
+    
+    #删除开机启动
+    update-rc.d -f pt-service remove
 
 
