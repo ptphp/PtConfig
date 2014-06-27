@@ -1,0 +1,28 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          pt-service
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: pt-service
+# Description:       pt-service service
+### END INIT INFO
+
+NAME=pt-service
+
+case "$1" in
+    start)
+        echo "${NAME} starting... "
+        start-stop-daemon --start --background --exec /root/pt-service.py
+    ;;
+    stop)
+    echo "${NAME} stopping... "
+        start-stop-daemon --stop --name pt-service.py
+        ;;
+    *)
+    echo "Usage: {start|stop}" >&2
+    exit 1
+    ;;
+esac
+exit 0
