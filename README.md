@@ -362,7 +362,11 @@ nutcracker用法与命令选项
     
     mv /etc/init.d/pt-service /etc/init.d/pt-service.bak
     wget https://github.com/ptphp/PtConfig/edit/master/init.d_pt-service -O /etc/init.d/pt-service
+    wget https://raw.githubusercontent.com/ptphp/PtConfig/master/pt-service.py -O /root/pt-service.py
+    
     chmod +x /etc/init.d/pt-service
+    chmod +x /root/pt-service.py
+    
     
     #开机启动
     update-rc.d pt-service defaults
