@@ -99,7 +99,7 @@
     
     
   * PHP代码示例：
-  
+  <pre>
     $trans_pass = "123456";
     $key = "$%^&*(H)h00j9ij";
     $data = array(
@@ -115,7 +115,7 @@
     
     $res = file_get_content($url."?".http_build_query($data))
 
-
+</pre>
   * 返回参数：
     + 格式：`json`
     + 结构：
