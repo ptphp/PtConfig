@@ -60,7 +60,14 @@
         
   * 请求示例：
   
+    一次请求10条 请求页码是 1 类型：terminal_pay：充值记录
+
     {"limit": 10, "start_time": "2014-06-10", "type": "terminal_pay", "end_time": "2014-06-20", "page": 1}
+    
+    
+    一次请求20条 请求页码是 3 类型：terminal_withdraw：提现记录
+
+    {"limit": 10, "start_time": "2014-06-10", "type": "terminal_withdraw", "end_time": "2014-06-20", "page": 3}
 
 
   * 返回参数：
