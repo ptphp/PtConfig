@@ -112,9 +112,7 @@
     
     $sign = md5($key.$data['amount'].$data['user_id'].$data['orderno'].$data['time'].$data['trans_pass']);
     $data['sign'] = $sign;
-    
     $res = file_get_content($url."?".http_build_query($data))
-
 </pre>
   * 返回参数：
     + 格式：`json`
