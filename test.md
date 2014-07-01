@@ -23,6 +23,7 @@
   * 交互示例：
   
     request   ==>> {"amount": 560.11, "terminal_id": "xx-xxx-xx", "user_id": 11202, "time": "2014-07-02 00:56:14"}
+
     response  ==>> {"result": "pay ok", "id": null, "error": 0}
   
 - ### 提现接口
