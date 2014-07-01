@@ -51,7 +51,7 @@
   * URL : `/api/app/record`
   * HTTP Method : `GET`
   * 请求参数：
-        + type:      类型
+        + type:      类型 ｛terminal_pay：充值记录|terminal_withdraw:提现记录|mall_withdraw：商城提现记录|rebate：返利记录｝
         + limit      一次返回条数
         + page       页码
         + start_time 开始时间
