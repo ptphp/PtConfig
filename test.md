@@ -2,7 +2,7 @@
 
 - ### 充值接口
 
-  * URL : `http://`url`/terminal/api/pay`
+  * URL : `http://0.0.0.0/terminal/api/pay`
   * HTTP Method : `POST`
   * 请求参数：
         + amount:     金额
