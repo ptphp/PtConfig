@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb6cf22-8cb2-4dfe-94bd-c36218581428" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ptphp/fabfile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ptphp/etc/nginx_develop.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ptphp/etc/nginx_product.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ptphp/bin/create.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ptphp/etc/nginx_develop.conf" afterPath="$PROJECT_DIR$/ptphp/etc/nginx_develop.conf" />
     </list>
     <ignored path="PtConfig.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +49,7 @@
       <file leaf-file-name="fabfile.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ptphp/fabfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="10" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="450">
+            <state line="19" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="450">
               <folding />
             </state>
           </provider>
@@ -58,25 +58,34 @@
       <file leaf-file-name="nginx_develop.conf" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ptphp/etc/nginx_develop.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="54" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0" vertical-offset="386" max-vertical-offset="705">
+            <state line="11" column="36" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginx_product.conf" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="create.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ptphp/bin/create.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="0" selection-start="378" selection-end="406" vertical-scroll-proportion="0.5660377" vertical-offset="210" max-vertical-offset="930">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nginx_product.conf" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ptphp/etc/nginx_product.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="50" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.4208494" vertical-offset="416" max-vertical-offset="675">
+            <state line="35" column="50" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="675">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="create.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ptphp/create.php">
+        <entry file="file://$PROJECT_DIR$/../ptphp/bin/create.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="13" selection-start="1118" selection-end="1118" vertical-scroll-proportion="-6.122449" vertical-offset="540" max-vertical-offset="930">
+            <state line="61" column="13" selection-start="1127" selection-end="1127" vertical-scroll-proportion="-6.122449" vertical-offset="540" max-vertical-offset="930">
               <folding />
             </state>
           </provider>
@@ -97,8 +106,9 @@
       <list>
         <option value="$PROJECT_DIR$/ptphp/app/config/url.php" />
         <option value="$PROJECT_DIR$/ptphp/fabfile.py" />
-        <option value="$PROJECT_DIR$/ptphp/etc/nginx_develop.conf" />
         <option value="$PROJECT_DIR$/ptphp/etc/nginx_product.conf" />
+        <option value="$PROJECT_DIR$/ptphp/etc/nginx_develop.conf" />
+        <option value="$PROJECT_DIR$/ptphp/bin/create.php" />
       </list>
     </option>
   </component>
@@ -217,6 +227,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PtConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PtConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptphp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -241,6 +269,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ptphp/bin" />
       <recent name="$PROJECT_DIR$/ptphp/etc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -318,9 +347,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../ptphp/create.php">
+    <entry file="file://$PROJECT_DIR$/../ptphp/bin/create.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="13" selection-start="1118" selection-end="1118" vertical-scroll-proportion="-6.122449" vertical-offset="540" max-vertical-offset="930">
+        <state line="61" column="13" selection-start="1127" selection-end="1127" vertical-scroll-proportion="-6.122449" vertical-offset="540" max-vertical-offset="930">
           <folding />
         </state>
       </provider>
@@ -339,23 +368,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ptphp/etc/nginx_product.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="50" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ptphp/fabfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="10" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="450">
+        <state line="19" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="450">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ptphp/etc/nginx_develop.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="54" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0" vertical-offset="386" max-vertical-offset="705">
+        <state line="11" column="36" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ptphp/etc/nginx_product.conf">
+    <entry file="file://$PROJECT_DIR$/ptphp/bin/create.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="50" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.4208494" vertical-offset="416" max-vertical-offset="675">
+        <state line="27" column="0" selection-start="378" selection-end="406" vertical-scroll-proportion="0.5660377" vertical-offset="210" max-vertical-offset="930">
           <folding />
         </state>
       </provider>
