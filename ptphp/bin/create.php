@@ -20,7 +20,7 @@ $dirs = array(
 $files = array(
     "webroot/index.php",
     "app/config/setting.php",
-    "app/config/url.php",
+    "app/config/urls.php",
     "etc/nginx_develop.conf",
     "etc/nginx_product.conf",
     "fabfile.py"
